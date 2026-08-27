@@ -25,7 +25,7 @@ class ShopperApplicationPendingScreen extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              padding: responsive.padding(horizontal: 30, vertical: 20),
+              padding: responsive.padding(horizontal: 30, vertical: 18),
               decoration: BoxDecoration(
                 color: AppColors.primaryDark,
                 borderRadius: BorderRadius.vertical(bottom: Radius.circular(responsive.radius(24))),
