@@ -8,28 +8,28 @@ A Flutter application that connects **home cooks (Hosts)**, **customers**, and *
 
 ### 👤 Customer
 <p float="left">
-  <img src="assets/screenshots/customer/Screenshot_20260831_154544.png" width="18%" />
-  <img src="assets/screenshots/customer/Screenshot_20260831_154555.png" width="18%" />
-  <img src="assets/screenshots/customer/Screenshot_20260831_154633.png" width="18%" />
-  <img src="assets/screenshots/customer/Screenshot_20260831_154654.png" width="18%" />
-  <img src="assets/screenshots/customer/Screenshot_20260831_154706.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/customer/Screenshot_20260831_154544.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/customer/Screenshot_20260831_154555.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/customer/Screenshot_20260831_154633.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/customer/Screenshot_20260831_154654.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/customer/Screenshot_20260831_154706.png" width="18%" />
 </p>
 
 ### 🧑‍🍳 Host
 <p float="left">
-  <img src="assets/screenshots/host/Screenshot_20260831_154946.png" width="18%" />
-  <img src="assets/screenshots/host/Screenshot_20260831_154954.png" width="18%" />
-  <img src="assets/screenshots/host/Screenshot_20260831_155002.png" width="18%" />
-  <img src="assets/screenshots/host/Screenshot_20260831_155018.png" width="18%" />
-  <img src="assets/screenshots/host/Screenshot_20260831_155721.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/host/Screenshot_20260831_154946.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/host/Screenshot_20260831_154954.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/host/Screenshot_20260831_155002.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/host/Screenshot_20260831_155018.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/host/Screenshot_20260831_155721.png" width="18%" />
 </p>
 
 ### 🛍️ Shopper
 <p float="left">
-  <img src="assets/screenshots/shopper/Screenshot_20260831_153736.png" width="18%" />
-  <img src="assets/screenshots/shopper/Screenshot_20260831_153748.png" width="18%" />
-  <img src="assets/screenshots/shopper/Screenshot_20260831_153802.png" width="18%" />
-  <img src="assets/screenshots/shopper/Screenshot_20260831_153818.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/shopper/Screenshot_20260831_153736.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/shopper/Screenshot_20260831_153748.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/shopper/Screenshot_20260831_153802.png" width="18%" />
+  <img src="https://raw.githubusercontent.com/rimuakter057/home_food_delivery/master/assets/screenshots/shopper/Screenshot_20260831_153818.png" width="18%" />
 </p>
 
 ---
