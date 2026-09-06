@@ -19,6 +19,8 @@ class LoginScreen extends StatefulWidget {
     this.successRoute = AppRoutes.home,
     this.signUpRoute = AppRoutes.signup,
     this.backRoute = AppRoutes.roleLanding,
+    this.demoEmail = 'customer@rimdim.com',
+    this.demoPassword = 'password123',
   });
 
   /// Where to navigate after a successful login — lets other roles (e.g.
@@ -31,14 +33,21 @@ class LoginScreen extends StatefulWidget {
   final String signUpRoute;
   final String backRoute;
 
+  /// Pre-filled per role so testing the demo doesn't require retyping
+  /// credentials every time — there's no real backend behind this form.
+  final String demoEmail;
+  final String demoPassword;
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  late final _emailController = TextEditingController(text: widget.demoEmail);
+  late final _passwordController = TextEditingController(
+    text: widget.demoPassword,
+  );
   bool _obscurePassword = true;
   bool _rememberMe = false;
   bool _isLoading = false;
@@ -78,11 +87,15 @@ class _LoginScreenState extends State<LoginScreen> {
               onBack: () => context.go(widget.backRoute),
               overlapping: AuthTabSwitcher(
                 active: AuthTab.signIn,
-                onChanged: (tab) => tab == AuthTab.signUp ? context.go(widget.signUpRoute) : null,
+                onChanged: (tab) => tab == AuthTab.signUp
+                    ? context.go(widget.signUpRoute)
+                    : null,
               ),
             ),
             Padding(
-              padding: responsive.padding(horizontal: 24).copyWith(top: responsive.spacing(70)),
+              padding: responsive
+                  .padding(horizontal: 24)
+                  .copyWith(top: responsive.spacing(70)),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -108,10 +121,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 AppAssets.eyeToggle,
                                 width: 18,
                                 height: 18,
-                                colorFilter: const ColorFilter.mode(AppColors.textSecondary, BlendMode.srcIn),
+                                colorFilter: const ColorFilter.mode(
+                                  AppColors.textSecondary,
+                                  BlendMode.srcIn,
+                                ),
                               )
                             : const Icon(Icons.visibility_off_outlined),
-                        onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                        onPressed: () => setState(
+                          () => _obscurePassword = !_obscurePassword,
+                        ),
                       ),
                     ),
                     SizedBox(height: responsive.spacing(8)),
@@ -119,7 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         InkWell(
-                          onTap: () => setState(() => _rememberMe = !_rememberMe),
+                          onTap: () =>
+                              setState(() => _rememberMe = !_rememberMe),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -127,18 +146,32 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: responsive.size(14.5),
                                 height: responsive.size(14.5),
                                 decoration: BoxDecoration(
-                                  color: _rememberMe ? const Color(0xFF167EE6) : Colors.transparent,
-                                  border: Border.all(color: const Color(0xFF167EE6), width: 1.2),
-                                  borderRadius: BorderRadius.circular(responsive.radius(3)),
+                                  color: _rememberMe
+                                      ? const Color(0xFF167EE6)
+                                      : Colors.transparent,
+                                  border: Border.all(
+                                    color: const Color(0xFF167EE6),
+                                    width: 1.2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(
+                                    responsive.radius(3),
+                                  ),
                                 ),
                                 child: _rememberMe
-                                    ? const Icon(Icons.check, size: 11, color: Colors.white)
+                                    ? const Icon(
+                                        Icons.check,
+                                        size: 11,
+                                        color: Colors.white,
+                                      )
                                     : null,
                               ),
                               SizedBox(width: responsive.spacing(8)),
                               Text(
                                 AppStrings.rememberMe,
-                                style: AppTextStyles.labelSmall.copyWith(color: const Color(0xFF167EE6), fontWeight: FontWeight.w500),
+                                style: AppTextStyles.labelSmall.copyWith(
+                                  color: const Color(0xFF167EE6),
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ],
                           ),
@@ -147,18 +180,28 @@ class _LoginScreenState extends State<LoginScreen> {
                           onTap: () => context.push(AppRoutes.forgotPassword),
                           child: Text(
                             AppStrings.forgotPassword,
-                            style: AppTextStyles.labelSmall.copyWith(color: const Color(0xFF167EE6), fontWeight: FontWeight.w500),
+                            style: AppTextStyles.labelSmall.copyWith(
+                              color: const Color(0xFF167EE6),
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ],
                     ),
                     SizedBox(height: responsive.spacing(24)),
-                    AppButton(label: AppStrings.loginButton, isLoading: _isLoading, onPressed: _handleLogin),
+                    AppButton(
+                      label: AppStrings.loginButton,
+                      isLoading: _isLoading,
+                      onPressed: _handleLogin,
+                    ),
                     SizedBox(height: responsive.spacing(24)),
                     Text(
                       AppStrings.orLogInWith,
                       textAlign: TextAlign.center,
-                      style: AppTextStyles.fieldLabel.copyWith(color: AppColors.primary, fontSize: 12),
+                      style: AppTextStyles.fieldLabel.copyWith(
+                        color: AppColors.primary,
+                        fontSize: 12,
+                      ),
                     ),
                     SizedBox(height: responsive.spacing(16)),
                     _SocialButton(
@@ -209,7 +252,9 @@ class _SocialButton extends StatelessWidget {
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(responsive.radius(8))),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(responsive.radius(8)),
+          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

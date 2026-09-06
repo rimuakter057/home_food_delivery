@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/router/app_router.dart';
+import '../../../../core/widgets/brand_logo.dart';
 import '../state/splash_config.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
               _blob(left: -0.2243 * w, top: 0.2587 * h, size: 1.0241 * w),
               _blob(left: 0.1935 * w, top: 0.7431 * h, size: 0.7212 * w),
               Center(
-                child: Image.asset(AppAssets.brandLogo, width: w * 0.746),
+                child: BrandLogo(width: w * 0.746),
               ),
             ],
           );

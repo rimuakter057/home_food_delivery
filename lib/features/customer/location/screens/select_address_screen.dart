@@ -54,12 +54,17 @@ class _SelectAddressScreenState extends State<SelectAddressScreen> {
                     padding: responsive.padding(horizontal: 30, vertical: 12),
                     child: InkWell(
                       onTap: () => context.pop(),
-                      borderRadius: BorderRadius.circular(responsive.radius(12)),
+                      borderRadius: BorderRadius.circular(
+                        responsive.radius(12),
+                      ),
                       child: SvgPicture.asset(
                         AppAssets.chevronBack,
                         width: responsive.iconSize(24),
                         height: responsive.iconSize(24),
-                        colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+                        colorFilter: const ColorFilter.mode(
+                          AppColors.primary,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
                   ),
@@ -75,7 +80,11 @@ class _SelectAddressScreenState extends State<SelectAddressScreen> {
                           color: AppColors.primary,
                           shape: BoxShape.circle,
                           boxShadow: [
-                            BoxShadow(color: const Color(0x802E7D32), blurRadius: responsive.spacing(6), offset: Offset(0, responsive.spacing(4))),
+                            BoxShadow(
+                              color: const Color(0x802E7D32),
+                              blurRadius: responsive.spacing(6),
+                              offset: Offset(0, responsive.spacing(4)),
+                            ),
                           ],
                         ),
                         child: Center(
@@ -83,7 +92,10 @@ class _SelectAddressScreenState extends State<SelectAddressScreen> {
                             AppAssets.locationPinSmall,
                             width: responsive.iconSize(20),
                             height: responsive.iconSize(20),
-                            colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                            colorFilter: const ColorFilter.mode(
+                              Colors.white,
+                              BlendMode.srcIn,
+                            ),
                           ),
                         ),
                       ),
@@ -91,7 +103,10 @@ class _SelectAddressScreenState extends State<SelectAddressScreen> {
                       Container(
                         width: responsive.size(8),
                         height: responsive.size(8),
-                        decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+                        decoration: const BoxDecoration(
+                          color: AppColors.primary,
+                          shape: BoxShape.circle,
+                        ),
                       ),
                     ],
                   ),
@@ -102,15 +117,28 @@ class _SelectAddressScreenState extends State<SelectAddressScreen> {
                     child: Padding(
                       padding: responsive.padding(vertical: 12),
                       child: Container(
-                        padding: responsive.padding(horizontal: 11, vertical: 6),
+                        padding: responsive.padding(
+                          horizontal: 11,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.surface,
-                          borderRadius: BorderRadius.circular(responsive.radius(24)),
-                          boxShadow: [BoxShadow(color: AppColors.cardShadow, blurRadius: responsive.spacing(4))],
+                          borderRadius: BorderRadius.circular(
+                            responsive.radius(24),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.cardShadow,
+                              blurRadius: responsive.spacing(4),
+                            ),
+                          ],
                         ),
                         child: Text(
                           AppStrings.moveMapToSetLocation,
-                          style: AppTextStyles.labelSmall.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500),
+                          style: AppTextStyles.labelSmall.copyWith(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ),
@@ -125,20 +153,42 @@ class _SelectAddressScreenState extends State<SelectAddressScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(AppStrings.setYourAddress, style: AppTextStyles.fieldLabel),
+                  Text(
+                    AppStrings.setYourAddress,
+                    style: AppTextStyles.fieldLabel,
+                  ),
                   SizedBox(height: responsive.spacing(12)),
                   Container(
-                    padding: responsive.padding(horizontal: 16, vertical: 15),
+                    padding: responsive.padding(horizontal: 16, vertical: 13),
                     decoration: BoxDecoration(
                       color: AppColors.surface,
-                      border: Border.all(color: AppColors.border, width: 0.5),
-                      borderRadius: BorderRadius.circular(responsive.radius(8)),
+                      borderRadius: BorderRadius.circular(
+                        responsive.radius(14),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.cardShadow,
+                          blurRadius: responsive.spacing(12),
+                          offset: Offset(0, responsive.spacing(4)),
+                        ),
+                      ],
                     ),
                     child: Row(
                       children: [
-                        SvgPicture.asset(AppAssets.search, width: 16, height: 16),
-                        SizedBox(width: responsive.spacing(6)),
-                        Text(AppStrings.searchForAddress, style: AppTextStyles.placeholder),
+                        SvgPicture.asset(
+                          AppAssets.search,
+                          width: 18,
+                          height: 18,
+                          colorFilter: const ColorFilter.mode(
+                            AppColors.textSecondary,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        SizedBox(width: responsive.spacing(10)),
+                        Text(
+                          AppStrings.searchForAddress,
+                          style: AppTextStyles.placeholder,
+                        ),
                       ],
                     ),
                   ),
@@ -150,12 +200,18 @@ class _SelectAddressScreenState extends State<SelectAddressScreen> {
                       padding: EdgeInsets.only(bottom: responsive.spacing(12)),
                       child: InkWell(
                         onTap: () => setState(() => _selectedAddress = index),
-                        borderRadius: BorderRadius.circular(responsive.radius(8)),
+                        borderRadius: BorderRadius.circular(
+                          responsive.radius(8),
+                        ),
                         child: Container(
                           padding: responsive.padding(all: 12),
                           decoration: BoxDecoration(
-                            color: isSelected ? const Color(0xFFE8F5E9) : AppColors.surface,
-                            borderRadius: BorderRadius.circular(responsive.radius(8)),
+                            color: isSelected
+                                ? const Color(0xFFE8F5E9)
+                                : AppColors.surface,
+                            borderRadius: BorderRadius.circular(
+                              responsive.radius(8),
+                            ),
                           ),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -164,21 +220,36 @@ class _SelectAddressScreenState extends State<SelectAddressScreen> {
                                 AppAssets.locationPinSmall,
                                 width: 16,
                                 height: 19,
-                                colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+                                colorFilter: const ColorFilter.mode(
+                                  AppColors.primary,
+                                  BlendMode.srcIn,
+                                ),
                               ),
                               SizedBox(width: responsive.spacing(6)),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(address.line1, style: AppTextStyles.bodyMedium.copyWith(fontWeight: FontWeight.w500)),
+                                    Text(
+                                      address.line1,
+                                      style: AppTextStyles.bodyMedium.copyWith(
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                     SizedBox(height: responsive.spacing(4)),
-                                    Text(address.line2, style: AppTextStyles.bodySmall),
+                                    Text(
+                                      address.line2,
+                                      style: AppTextStyles.bodySmall,
+                                    ),
                                   ],
                                 ),
                               ),
                               if (isSelected)
-                                const Icon(Icons.check_circle_rounded, color: AppColors.primary, size: 16),
+                                const Icon(
+                                  Icons.check_circle_rounded,
+                                  color: AppColors.primary,
+                                  size: 16,
+                                ),
                             ],
                           ),
                         ),
@@ -230,7 +301,12 @@ class _SelectAddressScreenState extends State<SelectAddressScreen> {
 }
 
 class _TagChip extends StatelessWidget {
-  const _TagChip({required this.icon, required this.label, required this.isSelected, required this.onTap});
+  const _TagChip({
+    required this.icon,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   final IconData icon;
   final String label;
@@ -252,7 +328,11 @@ class _TagChip extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 13, color: isSelected ? Colors.white : AppColors.textSecondary),
+            Icon(
+              icon,
+              size: 13,
+              color: isSelected ? Colors.white : AppColors.textSecondary,
+            ),
             SizedBox(width: responsive.spacing(6)),
             Text(
               label,

@@ -7,6 +7,7 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/responsive_helper.dart';
+import '../../../../core/widgets/brand_logo.dart';
 
 /// The role-selection landing screen (Figma node 493:4184): lets a new
 /// user pick which side of the marketplace they're joining before signing
@@ -35,7 +36,7 @@ class RoleLandingScreen extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Image.asset(AppAssets.brandLogo, width: responsive.size(241)),
+                        BrandLogo(width: responsive.size(241)),
                         SizedBox(height: responsive.spacing(12)),
                         Text(
                           AppStrings.appTagline,
