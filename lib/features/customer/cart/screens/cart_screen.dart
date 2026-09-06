@@ -16,7 +16,11 @@ import '../widgets/cart_summary.dart';
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
-  Future<void> _confirmRemove(BuildContext context, CartState cart, String foodId) async {
+  Future<void> _confirmRemove(
+    BuildContext context,
+    CartState cart,
+    String foodId,
+  ) async {
     final shouldRemove = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
@@ -52,7 +56,12 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
+          onPressed: () => context.canPop()
+              ? context.pop()
+              : context.read<NavigationState>().setIndex(0),
+        ),
         title: Text(AppStrings.cartTitle, style: AppTextStyles.titleLarge),
       ),
       body: SafeArea(
@@ -72,7 +81,10 @@ class CartScreen extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: responsive.padding(vertical: 12),
-                        child: Text('${cart.items.length} items', style: AppTextStyles.bodySmall),
+                        child: Text(
+                          '${cart.items.length} items',
+                          style: AppTextStyles.bodySmall,
+                        ),
                       ),
                     ),
                     Expanded(
@@ -81,9 +93,12 @@ class CartScreen extends StatelessWidget {
                             .map(
                               (item) => CartItemTile(
                                 item: item,
-                                onIncrement: () => cart.incrementQuantity(item.food.id),
-                                onDecrement: () => cart.decrementQuantity(item.food.id),
-                                onRemove: () => _confirmRemove(context, cart, item.food.id),
+                                onIncrement: () =>
+                                    cart.incrementQuantity(item.food.id),
+                                onDecrement: () =>
+                                    cart.decrementQuantity(item.food.id),
+                                onRemove: () =>
+                                    _confirmRemove(context, cart, item.food.id),
                               ),
                             )
                             .toList(),

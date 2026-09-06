@@ -109,7 +109,8 @@ class AppRoutes {
   static const shopperOrderTracking = '/shopper/orders/:id/tracking';
   static const shopperReportIssue = '/shopper/orders/:id/report-issue';
   static const shopperWithdraw = '/shopper/earnings/withdraw';
-  static const shopperWithdrawalRequested = '/shopper/earnings/withdrawal-requested';
+  static const shopperWithdrawalRequested =
+      '/shopper/earnings/withdrawal-requested';
   static const shopperEditProfile = '/shopper/profile/edit';
   static const shopperNotifications = '/shopper/profile/notifications';
 
@@ -120,10 +121,14 @@ class AppRoutes {
   static String rateOrderPath(String orderId) => '/rate-order/$orderId';
   static String hostPropertyDetailPath(String id) => '/host/properties/$id';
   static String hostReviewRequestPath(String id) => '/host/requests/$id/review';
-  static String hostDeliveryWindowPath(String id) => '/host/requests/$id/delivery-window';
-  static String hostDeliveryApprovedPath(String id) => '/host/requests/$id/approved';
-  static String shopperOrderTrackingPath(String id) => '/shopper/orders/$id/tracking';
-  static String shopperReportIssuePath(String id) => '/shopper/orders/$id/report-issue';
+  static String hostDeliveryWindowPath(String id) =>
+      '/host/requests/$id/delivery-window';
+  static String hostDeliveryApprovedPath(String id) =>
+      '/host/requests/$id/approved';
+  static String shopperOrderTrackingPath(String id) =>
+      '/shopper/orders/$id/tracking';
+  static String shopperReportIssuePath(String id) =>
+      '/shopper/orders/$id/report-issue';
 }
 
 class AppRouter {
@@ -132,53 +137,126 @@ class AppRouter {
   static final router = GoRouter(
     initialLocation: AppRoutes.splash,
     routes: [
-      GoRoute(path: AppRoutes.splash, builder: (context, state) => const SplashScreen()),
-      GoRoute(path: AppRoutes.onboarding, builder: (context, state) => const OnboardingScreen()),
-      GoRoute(path: AppRoutes.roleLanding, builder: (context, state) => const RoleLandingScreen()),
-      GoRoute(path: AppRoutes.login, builder: (context, state) => const LoginScreen()),
-      GoRoute(path: AppRoutes.signup, builder: (context, state) => const SignUpScreen()),
-      GoRoute(path: AppRoutes.forgotPassword, builder: (context, state) => const ForgotPasswordScreen()),
-      GoRoute(path: AppRoutes.otpVerify, builder: (context, state) => const OtpVerifyScreen()),
-      GoRoute(path: AppRoutes.resetPassword, builder: (context, state) => const ResetPasswordScreen()),
-      GoRoute(path: AppRoutes.enableLocation, builder: (context, state) => const EnableLocationScreen()),
-      GoRoute(path: AppRoutes.selectAddress, builder: (context, state) => const SelectAddressScreen()),
-      GoRoute(path: AppRoutes.home, builder: (context, state) => const MainShellScreen()),
-      GoRoute(path: AppRoutes.search, builder: (context, state) => const SearchScreen()),
+      GoRoute(
+        path: AppRoutes.splash,
+        builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.onboarding,
+        builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.roleLanding,
+        builder: (context, state) => const RoleLandingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.login,
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.signup,
+        builder: (context, state) => const SignUpScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.forgotPassword,
+        builder: (context, state) => const ForgotPasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.otpVerify,
+        builder: (context, state) => const OtpVerifyScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.resetPassword,
+        builder: (context, state) => const ResetPasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.enableLocation,
+        builder: (context, state) => const EnableLocationScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.selectAddress,
+        builder: (context, state) => const SelectAddressScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.home,
+        builder: (context, state) => const MainShellScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.search,
+        builder: (context, state) => const SearchScreen(),
+      ),
       GoRoute(
         path: AppRoutes.restaurant,
-        builder: (context, state) => RestaurantDetailScreen(restaurantId: state.pathParameters['id']!),
+        builder: (context, state) =>
+            RestaurantDetailScreen(restaurantId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: AppRoutes.food,
-        builder: (context, state) => FoodDetailScreen(foodId: state.pathParameters['id']!),
+        builder: (context, state) =>
+            FoodDetailScreen(foodId: state.pathParameters['id']!),
       ),
-      GoRoute(path: AppRoutes.cart, builder: (context, state) => const CartScreen()),
-      GoRoute(path: AppRoutes.checkout, builder: (context, state) => const CheckoutScreen()),
+      GoRoute(
+        path: AppRoutes.cart,
+        builder: (context, state) => const CartScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.checkout,
+        builder: (context, state) => const CheckoutScreen(),
+      ),
       GoRoute(
         path: AppRoutes.orderSuccess,
-        builder: (context, state) => OrderSuccessScreen(orderId: state.pathParameters['orderId']!),
+        builder: (context, state) =>
+            OrderSuccessScreen(orderId: state.pathParameters['orderId']!),
       ),
       GoRoute(
         path: AppRoutes.orderTracking,
-        builder: (context, state) => OrderTrackingScreen(orderId: state.pathParameters['orderId']!),
+        builder: (context, state) =>
+            OrderTrackingScreen(orderId: state.pathParameters['orderId']!),
       ),
       GoRoute(
         path: AppRoutes.rateOrder,
-        builder: (context, state) => RateOrderScreen(orderId: state.pathParameters['orderId']!),
+        builder: (context, state) =>
+            RateOrderScreen(orderId: state.pathParameters['orderId']!),
       ),
-      GoRoute(path: AppRoutes.orders, builder: (context, state) => const OrderHistoryScreen()),
-      GoRoute(path: AppRoutes.favorites, builder: (context, state) => const FavoritesScreen()),
-      GoRoute(path: AppRoutes.addresses, builder: (context, state) => const AddressesScreen()),
-      GoRoute(path: AppRoutes.editProfile, builder: (context, state) => const EditProfileScreen()),
-      GoRoute(path: AppRoutes.paymentMethods, builder: (context, state) => const PaymentMethodsScreen()),
-      GoRoute(path: AppRoutes.helpSupport, builder: (context, state) => const HelpSupportScreen()),
-      GoRoute(path: AppRoutes.privacySecurity, builder: (context, state) => const PrivacySecurityScreen()),
-      GoRoute(path: AppRoutes.notifications, builder: (context, state) => const NotificationsScreen()),
+      GoRoute(
+        path: AppRoutes.orders,
+        builder: (context, state) => const OrderHistoryScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.favorites,
+        builder: (context, state) => const FavoritesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.addresses,
+        builder: (context, state) => const AddressesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.editProfile,
+        builder: (context, state) => const EditProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.paymentMethods,
+        builder: (context, state) => const PaymentMethodsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.helpSupport,
+        builder: (context, state) => const HelpSupportScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.privacySecurity,
+        builder: (context, state) => const PrivacySecurityScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.notifications,
+        builder: (context, state) => const NotificationsScreen(),
+      ),
       GoRoute(
         path: AppRoutes.hostLogin,
         builder: (context, state) => const LoginScreen(
           successRoute: AppRoutes.hostHome,
           signUpRoute: AppRoutes.hostSignup,
+          demoEmail: 'host@rimdim.com',
+          demoPassword: 'password123',
         ),
       ),
       GoRoute(
@@ -188,55 +266,114 @@ class AppRouter {
           signInRoute: AppRoutes.hostLogin,
         ),
       ),
-      GoRoute(path: AppRoutes.hostHome, builder: (context, state) => const HostShellScreen()),
-      GoRoute(path: AppRoutes.hostAddProperty, builder: (context, state) => const AddPropertyScreen()),
-      GoRoute(path: AppRoutes.hostPropertyCreated, builder: (context, state) => const PropertyCreatedScreen()),
+      GoRoute(
+        path: AppRoutes.hostHome,
+        builder: (context, state) => const HostShellScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.hostAddProperty,
+        builder: (context, state) => const AddPropertyScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.hostPropertyCreated,
+        builder: (context, state) => const PropertyCreatedScreen(),
+      ),
       GoRoute(
         path: AppRoutes.hostPropertyDetail,
-        builder: (context, state) => PropertyDetailScreen(propertyId: state.pathParameters['id']!),
+        builder: (context, state) =>
+            PropertyDetailScreen(propertyId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: AppRoutes.hostReviewRequest,
-        builder: (context, state) => ReviewRequestScreen(requestId: state.pathParameters['id']!),
+        builder: (context, state) =>
+            ReviewRequestScreen(requestId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: AppRoutes.hostDeliveryWindow,
-        builder: (context, state) => DeliveryWindowScreen(requestId: state.pathParameters['id']!),
+        builder: (context, state) =>
+            DeliveryWindowScreen(requestId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: AppRoutes.hostDeliveryApproved,
-        builder: (context, state) => DeliveryApprovedScreen(requestId: state.pathParameters['id']!),
+        builder: (context, state) =>
+            DeliveryApprovedScreen(requestId: state.pathParameters['id']!),
       ),
-      GoRoute(path: AppRoutes.hostPersonalInformation, builder: (context, state) => const PersonalInformationScreen()),
-      GoRoute(path: AppRoutes.hostBusinessDetails, builder: (context, state) => const BusinessDetailsScreen()),
-      GoRoute(path: AppRoutes.hostEditProfile, builder: (context, state) => const HostEditProfileScreen()),
-      GoRoute(path: AppRoutes.hostNotifications, builder: (context, state) => const HostNotificationsScreen()),
+      GoRoute(
+        path: AppRoutes.hostPersonalInformation,
+        builder: (context, state) => const PersonalInformationScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.hostBusinessDetails,
+        builder: (context, state) => const BusinessDetailsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.hostEditProfile,
+        builder: (context, state) => const HostEditProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.hostNotifications,
+        builder: (context, state) => const HostNotificationsScreen(),
+      ),
       GoRoute(
         path: AppRoutes.shopperLogin,
         builder: (context, state) => const LoginScreen(
           successRoute: AppRoutes.shopperHome,
           signUpRoute: AppRoutes.shopperSignup,
           backRoute: AppRoutes.roleLanding,
+          demoEmail: 'shopper@rimdim.com',
+          demoPassword: 'password123',
         ),
       ),
-      GoRoute(path: AppRoutes.shopperSignup, builder: (context, state) => const ShopperBasicInfoScreen()),
-      GoRoute(path: AppRoutes.shopperVehicle, builder: (context, state) => const ShopperVehicleScreen()),
-      GoRoute(path: AppRoutes.shopperDocuments, builder: (context, state) => const ShopperDocumentsScreen()),
-      GoRoute(path: AppRoutes.shopperSubmitted, builder: (context, state) => const ShopperApplicationSubmittedScreen()),
-      GoRoute(path: AppRoutes.shopperPending, builder: (context, state) => const ShopperApplicationPendingScreen()),
-      GoRoute(path: AppRoutes.shopperHome, builder: (context, state) => const ShopperShellScreen()),
+      GoRoute(
+        path: AppRoutes.shopperSignup,
+        builder: (context, state) => const ShopperBasicInfoScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.shopperVehicle,
+        builder: (context, state) => const ShopperVehicleScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.shopperDocuments,
+        builder: (context, state) => const ShopperDocumentsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.shopperSubmitted,
+        builder: (context, state) => const ShopperApplicationSubmittedScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.shopperPending,
+        builder: (context, state) => const ShopperApplicationPendingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.shopperHome,
+        builder: (context, state) => const ShopperShellScreen(),
+      ),
       GoRoute(
         path: AppRoutes.shopperOrderTracking,
-        builder: (context, state) => ShopperOrderTrackingScreen(orderId: state.pathParameters['id']!),
+        builder: (context, state) =>
+            ShopperOrderTrackingScreen(orderId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: AppRoutes.shopperReportIssue,
-        builder: (context, state) => ShopperReportIssueScreen(orderId: state.pathParameters['id']!),
+        builder: (context, state) =>
+            ShopperReportIssueScreen(orderId: state.pathParameters['id']!),
       ),
-      GoRoute(path: AppRoutes.shopperWithdraw, builder: (context, state) => const ShopperWithdrawScreen()),
-      GoRoute(path: AppRoutes.shopperWithdrawalRequested, builder: (context, state) => const ShopperWithdrawalRequestedScreen()),
-      GoRoute(path: AppRoutes.shopperEditProfile, builder: (context, state) => const ShopperEditProfileScreen()),
-      GoRoute(path: AppRoutes.shopperNotifications, builder: (context, state) => const ShopperNotificationsScreen()),
+      GoRoute(
+        path: AppRoutes.shopperWithdraw,
+        builder: (context, state) => const ShopperWithdrawScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.shopperWithdrawalRequested,
+        builder: (context, state) => const ShopperWithdrawalRequestedScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.shopperEditProfile,
+        builder: (context, state) => const ShopperEditProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.shopperNotifications,
+        builder: (context, state) => const ShopperNotificationsScreen(),
+      ),
     ],
   );
 }

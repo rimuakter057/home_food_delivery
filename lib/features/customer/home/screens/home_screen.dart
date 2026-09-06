@@ -61,7 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           SizedBox(width: responsive.spacing(8)),
                           Text(
                             AppStrings.homeDeliveringTo,
-                            style: AppTextStyles.bodyMedium.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500),
+                            style: AppTextStyles.bodyMedium.copyWith(
+                              color: AppColors.primary,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ],
                       ),
@@ -72,7 +75,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               user.deliveryAddress.split(',').first,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: AppTextStyles.titleSmall.copyWith(color: AppColors.textSecondary),
+                              style: AppTextStyles.titleSmall.copyWith(
+                                color: AppColors.textSecondary,
+                              ),
                             ),
                           ),
                           SvgPicture.asset(
@@ -92,11 +97,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         InkWell(
                           onTap: () => context.push(AppRoutes.notifications),
-                          borderRadius: BorderRadius.circular(responsive.radius(18)),
+                          borderRadius: BorderRadius.circular(
+                            responsive.radius(18),
+                          ),
                           child: Container(
                             width: responsive.size(36),
                             height: responsive.size(36),
-                            decoration: const BoxDecoration(color: Color(0xFFF5F5F5), shape: BoxShape.circle),
+                            decoration: const BoxDecoration(
+                              color: Color(0xFFF5F5F5),
+                              shape: BoxShape.circle,
+                            ),
                             child: Center(
                               child: SvgPicture.asset(
                                 AppAssets.homeNotificationBell,
@@ -111,12 +121,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           top: -responsive.spacing(2),
                           child: Container(
                             padding: responsive.padding(all: 3),
-                            constraints: BoxConstraints(minWidth: responsive.size(16), minHeight: responsive.size(16)),
-                            decoration: const BoxDecoration(color: AppColors.error, shape: BoxShape.circle),
+                            constraints: BoxConstraints(
+                              minWidth: responsive.size(16),
+                              minHeight: responsive.size(16),
+                            ),
+                            decoration: const BoxDecoration(
+                              color: AppColors.error,
+                              shape: BoxShape.circle,
+                            ),
                             child: Text(
                               '2',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.white, fontSize: responsive.fontSize(9), fontWeight: FontWeight.w700),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: responsive.fontSize(9),
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                           ),
                         ),
@@ -125,16 +145,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(width: responsive.spacing(10)),
                     InkWell(
                       onTap: () => context.push(AppRoutes.editProfile),
-                      borderRadius: BorderRadius.circular(responsive.radius(18)),
+                      borderRadius: BorderRadius.circular(
+                        responsive.radius(18),
+                      ),
                       child: Container(
                         width: responsive.size(36),
                         height: responsive.size(36),
                         decoration: BoxDecoration(
                           color: user.avatarColor,
                           shape: BoxShape.circle,
-                          boxShadow: [BoxShadow(color: AppColors.primary.withValues(alpha: 0.3), blurRadius: responsive.spacing(8), offset: Offset(0, responsive.spacing(2)))],
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withValues(alpha: 0.3),
+                              blurRadius: responsive.spacing(8),
+                              offset: Offset(0, responsive.spacing(2)),
+                            ),
+                          ],
                         ),
-                        child: Icon(Icons.person, color: Colors.white, size: responsive.iconSize(18)),
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: responsive.iconSize(18),
+                        ),
                       ),
                     ),
                   ],
@@ -145,22 +177,57 @@ class _HomeScreenState extends State<HomeScreen> {
             GestureDetector(
               onTap: _openSearch,
               child: Container(
-                padding: responsive.padding(horizontal: 16, vertical: 15),
+                padding: responsive.padding(horizontal: 16, vertical: 13),
                 decoration: BoxDecoration(
                   color: AppColors.surface,
-                  borderRadius: BorderRadius.circular(responsive.radius(8)),
-                  border: Border.all(color: AppColors.border, width: 0.5),
+                  borderRadius: BorderRadius.circular(responsive.radius(14)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.cardShadow,
+                      blurRadius: responsive.spacing(12),
+                      offset: Offset(0, responsive.spacing(4)),
+                    ),
+                  ],
                 ),
                 child: Row(
                   children: [
-                    SvgPicture.asset(AppAssets.search, width: 16, height: 16),
-                    SizedBox(width: responsive.spacing(6)),
-                    Expanded(child: Text(AppStrings.searchHint, style: AppTextStyles.placeholder)),
+                    SvgPicture.asset(
+                      AppAssets.search,
+                      width: 18,
+                      height: 18,
+                      colorFilter: const ColorFilter.mode(
+                        AppColors.textSecondary,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    SizedBox(width: responsive.spacing(10)),
+                    Expanded(
+                      child: Text(
+                        AppStrings.searchHint,
+                        style: AppTextStyles.placeholder,
+                      ),
+                    ),
+                    SizedBox(width: responsive.spacing(8)),
                     Container(
-                      width: responsive.size(32),
-                      height: responsive.size(32),
-                      decoration: BoxDecoration(color: AppColors.divider, borderRadius: BorderRadius.circular(responsive.radius(8))),
-                      child: SvgPicture.asset(AppAssets.filterSliders, width: 15, height: 15),
+                      width: responsive.size(36),
+                      height: responsive.size(36),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(
+                          responsive.radius(10),
+                        ),
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          AppAssets.filterSliders,
+                          width: 16,
+                          height: 16,
+                          colorFilter: const ColorFilter.mode(
+                            AppColors.primary,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -176,7 +243,8 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: HomeMockData.categories.length,
-                separatorBuilder: (_, __) => SizedBox(width: responsive.spacing(16)),
+                separatorBuilder: (_, __) =>
+                    SizedBox(width: responsive.spacing(16)),
                 itemBuilder: (context, index) {
                   final category = HomeMockData.categories[index];
                   final isSelected = category.id == _selectedCategoryId;
@@ -191,36 +259,50 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(height: responsive.spacing(22)),
-            SectionHeader(title: AppStrings.popularKitchensTitle, onSeeAll: _openSearch),
+            SectionHeader(
+              title: AppStrings.popularKitchensTitle,
+              onSeeAll: _openSearch,
+            ),
             SizedBox(height: responsive.spacing(12)),
             ...nearbyStores.map(
               (restaurant) => Padding(
                 padding: EdgeInsets.only(bottom: responsive.spacing(12)),
                 child: StoreListCard(
-                  image: Image.asset(AppAssets.storeThumbFreshProduce, fit: BoxFit.cover),
+                  image: Image.asset(
+                    AppAssets.storeThumbFreshProduce,
+                    fit: BoxFit.cover,
+                  ),
                   title: restaurant.name,
                   rating: restaurant.rating,
-                  trailingLabel: restaurant.isOpen ? AppStrings.openNow : AppStrings.closedNow,
+                  trailingLabel: restaurant.isOpen
+                      ? AppStrings.openNow
+                      : AppStrings.closedNow,
                   trailingIsFree: restaurant.isOpen,
-                  onTap: () => context.push(AppRoutes.restaurantPath(restaurant.id)),
+                  onTap: () =>
+                      context.push(AppRoutes.restaurantPath(restaurant.id)),
                 ),
               ),
             ),
             SizedBox(height: responsive.spacing(10)),
-            SectionHeader(title: AppStrings.recommendedForYouTitle, onSeeAll: _openSearch),
+            SectionHeader(
+              title: AppStrings.recommendedForYouTitle,
+              onSeeAll: _openSearch,
+            ),
             SizedBox(height: responsive.spacing(12)),
             SizedBox(
               height: responsive.size(210),
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: foods.length,
-                separatorBuilder: (_, __) => SizedBox(width: responsive.spacing(12)),
+                separatorBuilder: (_, __) =>
+                    SizedBox(width: responsive.spacing(12)),
                 itemBuilder: (context, index) {
                   final food = foods[index];
                   return FoodCard(
                     food: food,
                     onTap: () => context.push(AppRoutes.foodPath(food.id)),
-                    onAdd: () => context.read<CartState>().addFood(food, quantity: 1),
+                    onAdd: () =>
+                        context.read<CartState>().addFood(food, quantity: 1),
                   );
                 },
               ),

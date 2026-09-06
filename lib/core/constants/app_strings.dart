@@ -2,7 +2,7 @@ class AppStrings {
   AppStrings._();
 
   // App
-  static const String appName = 'HomeFood';
+  static const String appName = 'rimdim_food_delivery';
   static const String appTagline = 'Fresh. Local. Delivered.';
 
   // Role landing

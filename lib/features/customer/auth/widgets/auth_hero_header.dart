@@ -4,6 +4,7 @@ import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/responsive_helper.dart';
+import '../../../../core/widgets/brand_logo.dart';
 
 /// The green rounded-bottom hero header shared by every auth screen
 /// (Sign In, Sign Up, Forgot Password, OTP, Reset Password). Pass
@@ -45,7 +46,7 @@ class AuthHeroHeader extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (showLogo) ...[
-                Image.asset(AppAssets.brandLogo, width: responsive.size(99)),
+                BrandLogo(width: responsive.size(99)),
                 SizedBox(height: responsive.spacing(12)),
               ],
               Text(

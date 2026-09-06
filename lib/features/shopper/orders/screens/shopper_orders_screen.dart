@@ -22,7 +22,10 @@ class _ShopperOrdersScreenState extends State<ShopperOrdersScreen> {
 
   static const _tabs = [
     (status: ShopperOrderStatus.pending, label: AppStrings.shopperTabPending),
-    (status: ShopperOrderStatus.completed, label: AppStrings.shopperTabCompleted),
+    (
+      status: ShopperOrderStatus.completed,
+      label: AppStrings.shopperTabCompleted,
+    ),
     (status: ShopperOrderStatus.rejected, label: AppStrings.shopperTabRejected),
   ];
 
@@ -38,57 +41,87 @@ class _ShopperOrdersScreenState extends State<ShopperOrdersScreen> {
           children: [
             Padding(
               padding: responsive.padding(horizontal: 16, vertical: 8),
-              child: Text(AppStrings.shopperMyOrders, style: AppTextStyles.titleLarge, textAlign: TextAlign.center),
+              child: Text(
+                AppStrings.shopperMyOrders,
+                style: AppTextStyles.titleLarge,
+                textAlign: TextAlign.center,
+              ),
             ),
             Padding(
               padding: responsive.padding(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: _tabs.map((tab) {
-                  final isActive = tab.status == _status;
-                  final count = ShopperOrderMockData.byStatus(tab.status).length;
-                  return Padding(
-                    padding: EdgeInsets.only(right: responsive.spacing(38)),
-                    child: InkWell(
-                      onTap: () => setState(() => _status = tab.status),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                tab.label,
-                                style: AppTextStyles.labelSmall.copyWith(
-                                  color: isActive ? AppColors.primary : AppColors.textSecondary,
-                                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(width: responsive.spacing(8)),
-                              Container(
-                                width: responsive.size(20),
-                                padding: responsive.padding(horizontal: 6, vertical: 2),
-                                decoration: BoxDecoration(
-                                  color: isActive ? const Color(0xFFE8F5E9) : const Color(0xFFF5F5F5),
-                                  borderRadius: BorderRadius.circular(responsive.radius(10)),
-                                ),
-                                child: Text(
-                                  '$count',
-                                  textAlign: TextAlign.center,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: _tabs.map((tab) {
+                    final isActive = tab.status == _status;
+                    final count = ShopperOrderMockData.byStatus(
+                      tab.status,
+                    ).length;
+                    return Padding(
+                      padding: EdgeInsets.only(right: responsive.spacing(38)),
+                      child: InkWell(
+                        onTap: () => setState(() => _status = tab.status),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  tab.label,
                                   style: AppTextStyles.labelSmall.copyWith(
-                                    color: isActive ? AppColors.primary : const Color(0xFF848484),
-                                    fontWeight: isActive ? FontWeight.bold : FontWeight.w500,
+                                    color: isActive
+                                        ? AppColors.primary
+                                        : AppColors.textSecondary,
+                                    fontWeight: isActive
+                                        ? FontWeight.w600
+                                        : FontWeight.w500,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: responsive.spacing(8)),
-                          Container(height: 2, width: responsive.size(60), color: isActive ? AppColors.primary : Colors.transparent),
-                        ],
+                                SizedBox(width: responsive.spacing(8)),
+                                Container(
+                                  width: responsive.size(20),
+                                  padding: responsive.padding(
+                                    horizontal: 6,
+                                    vertical: 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: isActive
+                                        ? const Color(0xFFE8F5E9)
+                                        : const Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(
+                                      responsive.radius(10),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    '$count',
+                                    textAlign: TextAlign.center,
+                                    style: AppTextStyles.labelSmall.copyWith(
+                                      color: isActive
+                                          ? AppColors.primary
+                                          : const Color(0xFF848484),
+                                      fontWeight: isActive
+                                          ? FontWeight.bold
+                                          : FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: responsive.spacing(8)),
+                            Container(
+                              height: 2,
+                              width: responsive.size(60),
+                              color: isActive
+                                  ? AppColors.primary
+                                  : Colors.transparent,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }).toList(),
+                    );
+                  }).toList(),
+                ),
               ),
             ),
             Divider(color: AppColors.textPlaceholder, height: 1),
@@ -96,10 +129,13 @@ class _ShopperOrdersScreenState extends State<ShopperOrdersScreen> {
               child: ListView.separated(
                 padding: responsive.padding(horizontal: 16, vertical: 16),
                 itemCount: orders.length,
-                separatorBuilder: (_, __) => SizedBox(height: responsive.spacing(12)),
+                separatorBuilder: (_, __) =>
+                    SizedBox(height: responsive.spacing(12)),
                 itemBuilder: (context, index) => _OrderCard(
                   order: orders[index],
-                  onTap: () => context.push(AppRoutes.shopperOrderTrackingPath(orders[index].id)),
+                  onTap: () => context.push(
+                    AppRoutes.shopperOrderTrackingPath(orders[index].id),
+                  ),
                 ),
               ),
             ),
@@ -128,7 +164,13 @@ class _OrderCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.surface,
           borderRadius: BorderRadius.circular(responsive.radius(8)),
-          boxShadow: [BoxShadow(color: const Color(0x0F000000), blurRadius: responsive.spacing(8), offset: Offset(0, responsive.spacing(2)))],
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0x0F000000),
+              blurRadius: responsive.spacing(8),
+              offset: Offset(0, responsive.spacing(2)),
+            ),
+          ],
         ),
         child: Column(
           children: [
@@ -140,35 +182,72 @@ class _OrderCard extends StatelessWidget {
                     Container(
                       width: responsive.size(40),
                       height: responsive.size(40),
-                      decoration: BoxDecoration(color: const Color(0xFFF5F5F5), borderRadius: BorderRadius.circular(responsive.radius(8))),
-                      child: Center(child: Text(order.emoji, style: TextStyle(fontSize: responsive.fontSize(17)))),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF5F5F5),
+                        borderRadius: BorderRadius.circular(
+                          responsive.radius(8),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          order.emoji,
+                          style: TextStyle(fontSize: responsive.fontSize(17)),
+                        ),
+                      ),
                     ),
                     SizedBox(width: responsive.spacing(12)),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(order.storeName, style: AppTextStyles.titleSmall.copyWith(fontWeight: FontWeight.bold)),
-                        Text('${order.itemCount} items   ·  ${order.time}', style: AppTextStyles.bodySmall),
+                        Text(
+                          order.storeName,
+                          style: AppTextStyles.titleSmall.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '${order.itemCount} items   ·  ${order.time}',
+                          style: AppTextStyles.bodySmall,
+                        ),
                       ],
                     ),
                   ],
                 ),
                 if (order.status == ShopperOrderStatus.pending)
-                  Text('\$${order.amount.toStringAsFixed(2)}', style: AppTextStyles.titleSmall.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 16, height: 24 / 16))
+                  Text(
+                    '\$${order.amount.toStringAsFixed(2)}',
+                    style: AppTextStyles.titleSmall.copyWith(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      height: 24 / 16,
+                    ),
+                  )
                 else
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Container(
-                        padding: responsive.padding(horizontal: 10, vertical: 4),
+                        padding: responsive.padding(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
-                          color: order.status == ShopperOrderStatus.completed ? const Color(0xFFE8F5E9) : const Color(0xFFFFEBEE),
-                          borderRadius: BorderRadius.circular(responsive.radius(4)),
+                          color: order.status == ShopperOrderStatus.completed
+                              ? const Color(0xFFE8F5E9)
+                              : const Color(0xFFFFEBEE),
+                          borderRadius: BorderRadius.circular(
+                            responsive.radius(4),
+                          ),
                         ),
                         child: Text(
-                          order.status == ShopperOrderStatus.completed ? AppStrings.shopperCompleted : AppStrings.shopperRejected,
+                          order.status == ShopperOrderStatus.completed
+                              ? AppStrings.shopperCompleted
+                              : AppStrings.shopperRejected,
                           style: AppTextStyles.labelSmall.copyWith(
-                            color: order.status == ShopperOrderStatus.completed ? AppColors.primary : AppColors.error,
+                            color: order.status == ShopperOrderStatus.completed
+                                ? AppColors.primary
+                                : AppColors.error,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -188,16 +267,33 @@ class _OrderCard extends StatelessWidget {
                       onPressed: () {},
                       style: OutlinedButton.styleFrom(
                         side: BorderSide.none,
-                        padding: responsive.padding(horizontal: 12, vertical: 6),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(responsive.radius(8))),
+                        padding: responsive.padding(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            responsive.radius(8),
+                          ),
+                        ),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.close_rounded, size: responsive.iconSize(14), color: AppColors.textSecondary),
+                          Icon(
+                            Icons.close_rounded,
+                            size: responsive.iconSize(14),
+                            color: AppColors.textSecondary,
+                          ),
                           SizedBox(width: responsive.spacing(6)),
-                          Text(AppStrings.shopperDecline, style: AppTextStyles.labelSmall.copyWith(color: AppColors.textSecondary, fontWeight: FontWeight.w600)),
+                          Text(
+                            AppStrings.shopperDecline,
+                            style: AppTextStyles.labelSmall.copyWith(
+                              color: AppColors.textSecondary,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -207,16 +303,33 @@ class _OrderCard extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
-                        padding: responsive.padding(horizontal: 12, vertical: 6),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(responsive.radius(8))),
+                        padding: responsive.padding(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            responsive.radius(8),
+                          ),
+                        ),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.check_rounded, size: responsive.iconSize(14), color: Colors.white),
+                          Icon(
+                            Icons.check_rounded,
+                            size: responsive.iconSize(14),
+                            color: Colors.white,
+                          ),
                           SizedBox(width: responsive.spacing(6)),
-                          Text(AppStrings.shopperAccept, style: AppTextStyles.labelSmall.copyWith(color: Colors.white, fontWeight: FontWeight.w600)),
+                          Text(
+                            AppStrings.shopperAccept,
+                            style: AppTextStyles.labelSmall.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ],
                       ),
                     ),

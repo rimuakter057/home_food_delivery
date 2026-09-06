@@ -27,14 +27,20 @@ class PropertyDetailScreen extends StatelessWidget {
         child: ListView(
           padding: responsive.padding(horizontal: 16, vertical: 8),
           children: [
-            InkWell(
-              onTap: () => context.pop(),
-              borderRadius: BorderRadius.circular(responsive.radius(12)),
-              child: SvgPicture.asset(
-                AppAssets.chevronBack,
-                width: responsive.iconSize(24),
-                height: responsive.iconSize(24),
-                colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: InkWell(
+                onTap: () => context.pop(),
+                borderRadius: BorderRadius.circular(responsive.radius(12)),
+                child: SvgPicture.asset(
+                  AppAssets.chevronBack,
+                  width: responsive.iconSize(24),
+                  height: responsive.iconSize(24),
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.primary,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
             ),
             SizedBox(height: responsive.spacing(16)),
@@ -45,16 +51,30 @@ class PropertyDetailScreen extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  Image.asset(property.image, width: double.infinity, height: responsive.size(118), fit: BoxFit.cover),
+                  Image.asset(
+                    property.image,
+                    width: double.infinity,
+                    height: responsive.size(118),
+                    fit: BoxFit.cover,
+                  ),
                   Positioned(
                     right: responsive.spacing(12),
                     top: responsive.spacing(12),
                     child: Container(
                       width: responsive.size(26),
                       height: responsive.size(26),
-                      decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.36), borderRadius: BorderRadius.circular(responsive.radius(4))),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.36),
+                        borderRadius: BorderRadius.circular(
+                          responsive.radius(4),
+                        ),
+                      ),
                       child: Center(
-                        child: SvgPicture.asset(AppAssets.hostEditPencil, width: responsive.iconSize(14), height: responsive.iconSize(14)),
+                        child: SvgPicture.asset(
+                          AppAssets.hostEditPencil,
+                          width: responsive.iconSize(14),
+                          height: responsive.iconSize(14),
+                        ),
                       ),
                     ),
                   ),
@@ -63,20 +83,42 @@ class PropertyDetailScreen extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       child: Container(
                         width: double.infinity,
-                        padding: responsive.padding(horizontal: 16, vertical: 6),
+                        padding: responsive.padding(
+                          horizontal: 16,
+                          vertical: 6,
+                        ),
                         color: Colors.black.withValues(alpha: 0.32),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(property.name, style: AppTextStyles.titleSmall.copyWith(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
+                            Text(
+                              property.name,
+                              style: AppTextStyles.titleSmall.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                             Container(
-                              padding: responsive.padding(horizontal: 8, vertical: 5),
+                              padding: responsive.padding(
+                                horizontal: 8,
+                                vertical: 5,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.white.withValues(alpha: 0.2),
-                                border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
-                                borderRadius: BorderRadius.circular(responsive.radius(4)),
+                                border: Border.all(
+                                  color: Colors.white.withValues(alpha: 0.3),
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  responsive.radius(4),
+                                ),
                               ),
-                              child: Text(property.type, style: AppTextStyles.labelSmall.copyWith(color: Colors.white)),
+                              child: Text(
+                                property.type,
+                                style: AppTextStyles.labelSmall.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -96,7 +138,11 @@ class PropertyDetailScreen extends StatelessWidget {
                   bottomRight: Radius.circular(responsive.radius(8)),
                 ),
                 boxShadow: [
-                  BoxShadow(color: AppColors.cardShadow, blurRadius: responsive.spacing(4), offset: Offset(0, responsive.spacing(2))),
+                  BoxShadow(
+                    color: AppColors.cardShadow,
+                    blurRadius: responsive.spacing(4),
+                    offset: Offset(0, responsive.spacing(2)),
+                  ),
                 ],
               ),
               child: Column(
@@ -104,16 +150,32 @@ class PropertyDetailScreen extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      SvgPicture.asset(AppAssets.locationPinSmall, width: responsive.iconSize(16), height: responsive.iconSize(16), colorFilter: const ColorFilter.mode(AppColors.textSecondary, BlendMode.srcIn)),
+                      SvgPicture.asset(
+                        AppAssets.locationPinSmall,
+                        width: responsive.iconSize(16),
+                        height: responsive.iconSize(16),
+                        colorFilter: const ColorFilter.mode(
+                          AppColors.textSecondary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                       SizedBox(width: responsive.spacing(12)),
-                      Expanded(child: Text(property.address, style: AppTextStyles.bodySmall)),
+                      Expanded(
+                        child: Text(
+                          property.address,
+                          style: AppTextStyles.bodySmall,
+                        ),
+                      ),
                     ],
                   ),
                   SizedBox(height: responsive.spacing(12)),
                   Container(
                     width: double.infinity,
                     padding: responsive.padding(horizontal: 16, vertical: 12),
-                    decoration: BoxDecoration(border: Border.all(color: AppColors.border, width: 0.5), borderRadius: BorderRadius.circular(responsive.radius(8))),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.border, width: 0.5),
+                      borderRadius: BorderRadius.circular(responsive.radius(8)),
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -123,18 +185,34 @@ class PropertyDetailScreen extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(AppStrings.hostPropertyCode, style: AppTextStyles.bodySmall),
+                                Text(
+                                  AppStrings.hostPropertyCode,
+                                  style: AppTextStyles.bodySmall,
+                                ),
                                 Text(
                                   property.code,
-                                  style: AppTextStyles.titleSmall.copyWith(color: AppColors.tealText, fontWeight: FontWeight.bold, fontSize: 16, height: 28 / 16),
+                                  style: AppTextStyles.titleSmall.copyWith(
+                                    color: AppColors.tealText,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    height: 28 / 16,
+                                  ),
                                 ),
                               ],
                             ),
                             Row(
                               children: [
-                                SvgPicture.asset(AppAssets.hostCopyIcon, width: responsive.iconSize(20), height: responsive.iconSize(20)),
+                                SvgPicture.asset(
+                                  AppAssets.hostCopyIcon,
+                                  width: responsive.iconSize(20),
+                                  height: responsive.iconSize(20),
+                                ),
                                 SizedBox(width: responsive.spacing(4)),
-                                SvgPicture.asset(AppAssets.hostShareIcon, width: responsive.iconSize(20), height: responsive.iconSize(20)),
+                                SvgPicture.asset(
+                                  AppAssets.hostShareIcon,
+                                  width: responsive.iconSize(20),
+                                  height: responsive.iconSize(20),
+                                ),
                               ],
                             ),
                           ],
@@ -142,9 +220,20 @@ class PropertyDetailScreen extends StatelessWidget {
                         SizedBox(height: responsive.spacing(12)),
                         Container(
                           width: double.infinity,
-                          padding: responsive.padding(horizontal: 12, vertical: 6),
-                          decoration: BoxDecoration(color: const Color(0xFFF5F5F5), borderRadius: BorderRadius.circular(responsive.radius(8))),
-                          child: Text(AppStrings.hostShareCodeNote, style: AppTextStyles.bodySmall),
+                          padding: responsive.padding(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFF5F5F5),
+                            borderRadius: BorderRadius.circular(
+                              responsive.radius(8),
+                            ),
+                          ),
+                          child: Text(
+                            AppStrings.hostShareCodeNote,
+                            style: AppTextStyles.bodySmall,
+                          ),
                         ),
                       ],
                     ),
@@ -156,8 +245,17 @@ class PropertyDetailScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(AppStrings.hostDeliveryRules, style: AppTextStyles.titleSmall),
-                Text(AppStrings.hostViewAll, style: AppTextStyles.labelSmall.copyWith(color: AppColors.tealText, fontWeight: FontWeight.w500)),
+                Text(
+                  AppStrings.hostDeliveryRules,
+                  style: AppTextStyles.titleSmall,
+                ),
+                Text(
+                  AppStrings.hostViewAll,
+                  style: AppTextStyles.labelSmall.copyWith(
+                    color: AppColors.tealText,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ],
             ),
             SizedBox(height: responsive.spacing(12)),
@@ -167,7 +265,13 @@ class PropertyDetailScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.surface,
                 borderRadius: BorderRadius.circular(responsive.radius(8)),
-                boxShadow: [BoxShadow(color: AppColors.cardShadow, blurRadius: responsive.spacing(4), offset: Offset(0, responsive.spacing(2)))],
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.cardShadow,
+                    blurRadius: responsive.spacing(4),
+                    offset: Offset(0, responsive.spacing(2)),
+                  ),
+                ],
               ),
               child: Column(
                 children: [
@@ -191,8 +295,17 @@ class PropertyDetailScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(AppStrings.hostRecentOrders, style: AppTextStyles.titleSmall),
-                Text(AppStrings.hostViewAll, style: AppTextStyles.labelSmall.copyWith(color: AppColors.tealText, fontWeight: FontWeight.w500)),
+                Text(
+                  AppStrings.hostRecentOrders,
+                  style: AppTextStyles.titleSmall,
+                ),
+                Text(
+                  AppStrings.hostViewAll,
+                  style: AppTextStyles.labelSmall.copyWith(
+                    color: AppColors.tealText,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ],
             ),
             SizedBox(height: responsive.spacing(12)),
@@ -210,7 +323,12 @@ class PropertyDetailScreen extends StatelessWidget {
 }
 
 class _RuleTile extends StatelessWidget {
-  const _RuleTile({required this.icon, required this.background, required this.title, required this.subtitle});
+  const _RuleTile({
+    required this.icon,
+    required this.background,
+    required this.title,
+    required this.subtitle,
+  });
 
   final String icon;
   final Color background;
@@ -225,20 +343,38 @@ class _RuleTile extends StatelessWidget {
         Container(
           width: responsive.size(40),
           height: responsive.size(40),
-          decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(responsive.radius(8))),
-          child: Center(child: SvgPicture.asset(icon, width: responsive.iconSize(20), height: responsive.iconSize(20))),
+          decoration: BoxDecoration(
+            color: background,
+            borderRadius: BorderRadius.circular(responsive.radius(8)),
+          ),
+          child: Center(
+            child: SvgPicture.asset(
+              icon,
+              width: responsive.iconSize(20),
+              height: responsive.iconSize(20),
+            ),
+          ),
         ),
         SizedBox(width: responsive.spacing(12)),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: AppTextStyles.titleSmall.copyWith(fontWeight: FontWeight.w600)),
+              Text(
+                title,
+                style: AppTextStyles.titleSmall.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               Text(subtitle, style: AppTextStyles.bodySmall),
             ],
           ),
         ),
-        SvgPicture.asset(AppAssets.chevronRightSmall, width: responsive.iconSize(20), height: responsive.iconSize(20)),
+        SvgPicture.asset(
+          AppAssets.chevronRightSmall,
+          width: responsive.iconSize(20),
+          height: responsive.iconSize(20),
+        ),
       ],
     );
   }
@@ -258,7 +394,13 @@ class _RecentOrderTile extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(responsive.radius(8)),
-        boxShadow: [BoxShadow(color: const Color(0x0F000000), blurRadius: responsive.spacing(8), offset: Offset(0, responsive.spacing(2)))],
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0x0F000000),
+            blurRadius: responsive.spacing(8),
+            offset: Offset(0, responsive.spacing(2)),
+          ),
+        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -266,19 +408,36 @@ class _RecentOrderTile extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(order.customerName, style: AppTextStyles.titleSmall.copyWith(fontWeight: FontWeight.bold)),
-              Text('${order.orderId} • ${order.date}', style: AppTextStyles.bodySmall),
+              Text(
+                order.customerName,
+                style: AppTextStyles.titleSmall.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                '${order.orderId} • ${order.date}',
+                style: AppTextStyles.bodySmall,
+              ),
             ],
           ),
           Container(
             padding: responsive.padding(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
-              color: order.isApproved ? const Color(0xFFE8F5E9) : const Color(0xFFFFF3E0),
+              color: order.isApproved
+                  ? const Color(0xFFE8F5E9)
+                  : const Color(0xFFFFF3E0),
               borderRadius: BorderRadius.circular(responsive.radius(4)),
             ),
             child: Text(
-              order.isApproved ? AppStrings.hostApproved : AppStrings.hostPending,
-              style: AppTextStyles.labelSmall.copyWith(color: order.isApproved ? AppColors.primary : AppColors.ratingStar, fontWeight: FontWeight.w500),
+              order.isApproved
+                  ? AppStrings.hostApproved
+                  : AppStrings.hostPending,
+              style: AppTextStyles.labelSmall.copyWith(
+                color: order.isApproved
+                    ? AppColors.primary
+                    : AppColors.ratingStar,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ],
