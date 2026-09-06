@@ -8,6 +8,7 @@ import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/responsive_helper.dart';
 import '../../../../core/widgets/app_button.dart';
+import '../../../../core/widgets/brand_logo.dart';
 
 /// The Shopper "Application Under Review" status screen (Figma node
 /// 180:8488) — the landing screen once the wizard is submitted, and where
@@ -32,7 +33,7 @@ class ShopperApplicationPendingScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Image.asset(AppAssets.brandLogo, width: responsive.size(48)),
+                  BrandLogo(width: responsive.size(48)),
                   SizedBox(width: responsive.spacing(12)),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

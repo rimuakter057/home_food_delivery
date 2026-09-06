@@ -24,7 +24,12 @@ class _SearchScreenState extends State<SearchScreen> {
   String _query = '';
   int _selectedFilter = 0;
 
-  static const _filters = ['All Stores', '🛒 Grocery', '🌿 Organic', '⚡ Convenience'];
+  static const _filters = [
+    'All Stores',
+    '🛒 Grocery',
+    '🌿 Organic',
+    '⚡ Convenience',
+  ];
 
   @override
   void dispose() {
@@ -56,12 +61,17 @@ class _SearchScreenState extends State<SearchScreen> {
                     alignment: Alignment.centerLeft,
                     child: InkWell(
                       onTap: () => context.pop(),
-                      borderRadius: BorderRadius.circular(responsive.radius(12)),
+                      borderRadius: BorderRadius.circular(
+                        responsive.radius(12),
+                      ),
                       child: SvgPicture.asset(
                         AppAssets.chevronBack,
                         width: responsive.iconSize(24),
                         height: responsive.iconSize(24),
-                        colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+                        colorFilter: const ColorFilter.mode(
+                          AppColors.primary,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
                   ),
@@ -70,16 +80,30 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               SizedBox(height: responsive.spacing(16)),
               Container(
-                padding: responsive.padding(horizontal: 16, vertical: 14),
+                padding: responsive.padding(horizontal: 16, vertical: 12),
                 decoration: BoxDecoration(
                   color: AppColors.surface,
-                  borderRadius: BorderRadius.circular(responsive.radius(8)),
-                  border: Border.all(color: AppColors.border, width: 0.5),
+                  borderRadius: BorderRadius.circular(responsive.radius(14)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.cardShadow,
+                      blurRadius: responsive.spacing(12),
+                      offset: Offset(0, responsive.spacing(4)),
+                    ),
+                  ],
                 ),
                 child: Row(
                   children: [
-                    SvgPicture.asset(AppAssets.search, width: 16, height: 16),
-                    SizedBox(width: responsive.spacing(6)),
+                    SvgPicture.asset(
+                      AppAssets.search,
+                      width: 18,
+                      height: 18,
+                      colorFilter: const ColorFilter.mode(
+                        AppColors.textSecondary,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    SizedBox(width: responsive.spacing(10)),
                     Expanded(
                       child: TextField(
                         controller: _controller,
@@ -93,11 +117,27 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(width: responsive.spacing(8)),
                     Container(
-                      width: responsive.size(32),
-                      height: responsive.size(32),
-                      decoration: BoxDecoration(color: AppColors.divider, borderRadius: BorderRadius.circular(responsive.radius(8))),
-                      child: SvgPicture.asset(AppAssets.filterSliders, width: 15, height: 15),
+                      width: responsive.size(36),
+                      height: responsive.size(36),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(
+                          responsive.radius(10),
+                        ),
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          AppAssets.filterSliders,
+                          width: 16,
+                          height: 16,
+                          colorFilter: const ColorFilter.mode(
+                            AppColors.primary,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -108,7 +148,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: _filters.length,
-                  separatorBuilder: (_, __) => SizedBox(width: responsive.spacing(8)),
+                  separatorBuilder: (_, __) =>
+                      SizedBox(width: responsive.spacing(8)),
                   itemBuilder: (context, index) => AppFilterChip(
                     label: _filters[index],
                     isSelected: index == _selectedFilter,
@@ -120,7 +161,10 @@ class _SearchScreenState extends State<SearchScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('${stores.length} stores found', style: AppTextStyles.bodySmall),
+                  Text(
+                    '${stores.length} stores found',
+                    style: AppTextStyles.bodySmall,
+                  ),
                   Row(
                     children: [
                       Text('Sort: ', style: AppTextStyles.bodySmall),
@@ -139,16 +183,24 @@ class _SearchScreenState extends State<SearchScreen> {
                       )
                     : ListView.separated(
                         itemCount: stores.length,
-                        separatorBuilder: (_, __) => SizedBox(height: responsive.spacing(12)),
+                        separatorBuilder: (_, __) =>
+                            SizedBox(height: responsive.spacing(12)),
                         itemBuilder: (context, index) {
                           final restaurant = stores[index];
                           return StoreListCard(
-                            image: Image.asset(AppAssets.storeThumbFreshProduce, fit: BoxFit.cover),
+                            image: Image.asset(
+                              AppAssets.storeThumbFreshProduce,
+                              fit: BoxFit.cover,
+                            ),
                             title: restaurant.name,
                             rating: restaurant.rating,
-                            trailingLabel: restaurant.isOpen ? AppStrings.openNow : AppStrings.closedNow,
+                            trailingLabel: restaurant.isOpen
+                                ? AppStrings.openNow
+                                : AppStrings.closedNow,
                             trailingIsFree: restaurant.isOpen,
-                            onTap: () => context.push(AppRoutes.restaurantPath(restaurant.id)),
+                            onTap: () => context.push(
+                              AppRoutes.restaurantPath(restaurant.id),
+                            ),
                           );
                         },
                       ),

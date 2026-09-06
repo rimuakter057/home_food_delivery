@@ -130,7 +130,6 @@ class AppAssets {
   static const hostNotifSms = '$_icons/host_notif_sms.svg';
 
   // Images
-  static const brandLogo = '$_images/brand_logo.png';
   static const dasherAvatar = '$_images/dasher_avatar.png';
   static const hostAvatar = '$_images/host_avatar.png';
   static const propertyDowntownLoft = '$_images/property_downtown_loft.png';
